@@ -3,7 +3,6 @@ if { [llength $argv] < 1} {
     exit 1
 }
 
-# Corrected comment: use 'argv'
 set dir_path [lindex $argv 0]
 
 if { ![file isdirectory $dir_path]} {
@@ -19,12 +18,10 @@ foreach file [glob -nocomplain -directory $dir_path *] {
     lappend my_files $file
 }
 
-# Use 'file join' for platform-independent paths
 set v_dir [file join /home/mohammad v_files]
 set rpt_dir [file join /home/mohammad rpt_files]
 set tcl_dir [file join /home/mohammad tcl_dir]
 
-# Combined directory creation for cleaner code
 if { ![file isdirectory $v_dir]} {file mkdir $v_dir}
 if { ![file isdirectory $rpt_dir]} {file mkdir $rpt_dir}
 if { ![file isdirectory $tcl_dir]} {file mkdir $tcl_dir}
@@ -53,7 +50,6 @@ foreach file $my_files {
                 puts "Error moving $filename: $result"
             }
         }
-        # Add a default case to handle other file types
         default {
             puts "Ignoring $filename (unknown file type)."
         }
